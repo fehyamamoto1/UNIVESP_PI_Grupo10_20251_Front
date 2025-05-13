@@ -1,23 +1,22 @@
 <template>
-  <v-app>
-    <v-container fluid class="d-flex pa-0">
+  <v-app class="app-background">
+    <v-container fluid class="d-flex">
       <v-navigation-drawer
         permanent
         expand-on-hover
         app
-        class="bg-black-lighten-4"
         width="240"
       >
         <v-list>
           <v-list-item class="px-2">
             <v-list-item-avatar>
-              <v-img src="https://images.vexels.com/media/users/3/129606/isolated/preview/74fb78d3222ba12833ea9275c53a4935-burger-logo.png"></v-img>
+              <v-img src="https://pro-assets.grandchef.com.br/gc6544/images/logo/60da02f9bf843.png"></v-img>
             </v-list-item-avatar>
           </v-list-item>
 
           <v-list-item>
             <v-list-item-content>
-              <v-list-item-title class="text-h6">BurgerHouse</v-list-item-title>
+              <v-list-item-title class="text-h6">Burgers house</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list>
@@ -34,8 +33,8 @@
             <v-list-item-title>Mesas</v-list-item-title>
           </v-list-item>
 
-          <v-list-item to="/ingredientes" link>
-            <v-list-item-title>Ingredientes</v-list-item-title>
+          <v-list-item to="/estoque" link>
+            <v-list-item-title>Estoque</v-list-item-title>
           </v-list-item>
 
           <v-list-item to="/cardapio" link>
@@ -45,7 +44,7 @@
       </v-navigation-drawer>
 
       <v-main>
-        <v-container fluid class="pa-6">
+        <v-container fluid class="app-background">
           <router-view />
         </v-container>
       </v-main>
@@ -64,3 +63,11 @@ export default {
   name: 'App'
 }
 </script>
+
+<style scoped>
+  .app-background {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #000000 50%, #ff8c00 100%);
+  }
+</style>

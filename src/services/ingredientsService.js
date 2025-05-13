@@ -1,7 +1,25 @@
 import api from './api'
 
-export const buscarIngredientes = () => api.get('/ingredientes')
-export const buscarIngredientePorId = (id) => api.get(`/ingredientes/${id}`)
-export const criarIngrediente = (dados) => api.post('/ingredientes', dados)
-export const atualizarIngrediente = (id, dados) => api.put(`/ingredientes/${id}`, dados)
-export const deletarIngrediente = (id) => api.delete(`/ingredientes/${id}`)
+export default {
+    async buscarIngredientes() {
+        const response = await api.get('/ingredientes/listarTodos')
+        return response.data
+    },
+
+    async buscarIngredientePorId(id) {
+        const response = await api.get(`/ingredientes/${id}`)
+        return response.data
+    },
+
+    async criarIngrediente(dados) {
+        return await api.post('/ingredientes', dados) 
+    },
+
+    async atualizarIngrediente(id, dados) {
+        return await api.put(`/ingredientes/${id}`, dados)
+    },
+
+    async deletarIngrediente(id){
+        return await api.delete(`/ingredientes/${id}`)
+    }
+}

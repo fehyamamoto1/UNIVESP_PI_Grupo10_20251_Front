@@ -1,7 +1,25 @@
 import api from './api'
 
-export const buscarMenu = () => api.get('/menu')
-export const buscarItemMenuPorId = (id) => api.get(`/menu/${id}`)
-export const criarItemMenu = (dados) => api.post('/menu', dados)
-export const atualizarItemMenu = (id, dados) => api.put(`/menu/${id}`, dados)
-export const deletarItemMenu = (id) => api.delete(`/menu/${id}`)
+export default {
+    async buscarMenu() {
+        const response = await api.get('/menu/listarItens')
+        return response.data
+    },
+
+    async buscarItemMenuPorId(id) {
+        const response = await api.get(`/menu/${id}`)
+        return response.data
+    },
+
+    async criarItemMenu(dados) {
+        return await api.post('/menu', dados)
+    },
+
+    async atualizarItemMenu(id, dados) {
+        return await api.put(`/menu/${id}`, dados)
+    },
+
+    async deletarItemMenu(id) {
+        return await api.delete(`/menu/${id}`)
+    }
+}

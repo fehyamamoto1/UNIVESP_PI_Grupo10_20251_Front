@@ -32,9 +32,9 @@
         <v-btn color="primary" @click="abrirMesa">Abrir mesa</v-btn>
       </div>
 
-      <div v-else>
+      <div class="itens-list-box" v-else >
         <h3>Lista de itens</h3>
-        <v-list>
+        <v-list class="itens-list">
           <v-list-item
             v-for="(item, index) in mesaAberta.itemList"
             :key="index"
@@ -68,7 +68,7 @@ export default {
   name: 'MesaView',
   data() {
     return {
-      mesas: [1, 2, 3, 4, 5], // Pode vir de API futuramente
+      mesas: [1, 2, 3, 4, 5], 
       mesaSelecionada: null,
       mesaAberta: null
     };
@@ -88,7 +88,7 @@ export default {
       };
       try {
         await mesaService.abrirMesa(this.mesaSelecionada, payload);
-        this.selecionarMesa(this.mesaSelecionada); // Atualiza o estado
+        this.selecionarMesa(this.mesaSelecionada); 
       } catch (err) {
         alert("Erro ao abrir mesa.");
       }
@@ -101,7 +101,7 @@ export default {
       };
       try {
         await mesaService.adicionarPedido(this.mesaSelecionada, payload);
-        this.selecionarMesa(this.mesaSelecionada); // Atualiza dados
+        this.selecionarMesa(this.mesaSelecionada); 
       } catch (err) {
         alert("Erro ao adicionar pedido.");
       }
@@ -109,3 +109,17 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.itens-list-box {
+  border: 1px solid #ccc;
+  border-radius: 12px; 
+  padding: 16px;
+  background-color: rgb(43, 44, 45);
+}
+.itens-list {
+  border: 1px solid #ccc;
+  border-radius: 12px; 
+  padding: 16px;
+}
+</style>

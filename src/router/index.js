@@ -8,7 +8,7 @@ import CardapioView from '@/views/CardapioView.vue'
 const routes = [
   { path: '/', component: HomeView },
   { path: '/mesas', component: MesaView },
-  { path: '/ingredientes', component: IngredientesView },
+  { path: '/estoque', component: IngredientesView },
   { path: '/cardapio', component: CardapioView },
 ]
 

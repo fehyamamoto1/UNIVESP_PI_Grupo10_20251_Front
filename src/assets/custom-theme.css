@@ -1,0 +1,38 @@
+body {
+    background: linear-gradient(to bottom, #000000, #ff6f00); /* preto → laranja */
+    color: white;
+  }
+  
+  /* Container principal (v-main > v-container) */
+  .v-main .v-container {
+    background: transparent;
+    color: white;
+  }
+  
+  /* Navegação lateral */
+  .v-navigation-drawer {
+    background-color: #1a1a1a !important; /* cinza quase preto */
+    color: white;
+  }
+  
+  /* Textos do menu lateral */
+  .v-navigation-drawer .v-list-item-title {
+    color: white !important;
+  }
+  
+  /* Hover/seleção do item no menu lateral */
+  .v-navigation-drawer .v-list-item--active,
+  .v-navigation-drawer .v-list-item:hover {
+    background-color: #333333 !important; /* um tom mais claro de cinza */
+  }
+  
+  /* Botões */
+  .v-btn {
+    color: white !important;
+  }
+  
+  /* Divider branco */
+  .v-divider {
+    border-color: white !important;
+  }
+  
