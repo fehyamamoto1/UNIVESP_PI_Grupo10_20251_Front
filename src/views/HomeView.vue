@@ -49,7 +49,7 @@
       </p>
 
       <p class="text-white">
-        O grupo agradece de coração aos proprietários Danilo e Jenifer por compartilharem alguns de seus desafios diários e nos trazer a inspiração para este projeto.
+        O grupo agradece de coração aos proprietários Danilo e Jhenifer por compartilharem alguns de seus desafios diários e nos trazer a inspiração para este projeto.
       </p>
 
       <br />
