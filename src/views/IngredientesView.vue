@@ -36,7 +36,7 @@
 
           <div class="d-flex justify-space-between mb-4">
             <span>Alerta em:</span>
-            <span>{{ i.alertLevel }} {{ i.measurementUnit }} ({{ i.quantity / 1000 }} kg)</span>
+            <span>{{ i.alertLevel }} {{ i.measurementUnit }} ({{ i.alertLevel / 1000 }} kg)</span>
           </div>
 
           <v-progress-linear

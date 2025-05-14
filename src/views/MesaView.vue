@@ -64,6 +64,14 @@
         Adicionar pedido
       </v-btn>
 
+      <v-btn
+        v-if="mesaAberta?.itemList?.length"
+        color="red"
+        @click="fecharMesa(mesaSelecionada)"
+      >
+        Fechar mesa
+      </v-btn>
+
       <MenuDrawer
         v-if="drawerAberto"
         :mesa-id="mesaSelecionada"
@@ -100,6 +108,10 @@ export default {
     abrirDrawer(acao) {
       this.acaoAtual = acao
       this.drawerAberto = true
+    },
+    async fecharMesa(id) { 
+      const response = await mesaService.fecharMesa(id)
+      await this.recarregarMesa()
     },
     async recarregarMesa() {
       await new Promise(resolve => setTimeout(resolve, 2000));
