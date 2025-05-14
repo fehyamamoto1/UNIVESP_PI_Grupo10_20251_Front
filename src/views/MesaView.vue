@@ -26,13 +26,18 @@
 
     <div v-if="mesaSelecionada">
       <h2>Mesa {{ mesaSelecionada }}</h2>
-
       <div v-if="!mesaAberta || !mesaAberta.itemList?.length">
         <p>Nenhum item na mesa.</p>
-        <v-btn color="primary" @click="abrirMesa">Abrir mesa</v-btn>
       </div>
+      <v-btn
+        color="primary"
+        @click="abrirDrawer('abrir')"
+        v-if="!mesaAberta || !mesaAberta.itemList?.length"
+      >
+        Abrir mesa
+      </v-btn>
 
-      <div class="itens-list-box" v-else >
+       <div class="itens-list-box" v-else >
         <h3>Lista de itens</h3>
         <v-list class="itens-list">
           <v-list-item
@@ -49,65 +54,59 @@
           </v-list-item>
         </v-list>
         <h3 class="mt-4">Total: R$ {{ mesaAberta.totalValue?.toFixed(2) || '0.00' }}</h3>
-        <v-btn
-          v-if="mesaAberta.itemList?.length"
-          color="primary"
-          @click="adicionarPedido"
-        >
-          Adicionar pedido
-        </v-btn>
       </div>
+
+      <v-btn
+        v-if="mesaAberta?.itemList?.length"
+        color="primary"
+        @click="abrirDrawer('adicionar')"
+      >
+        Adicionar pedido
+      </v-btn>
+
+      <MenuDrawer
+        v-if="drawerAberto"
+        :mesa-id="mesaSelecionada"
+        :acao="acaoAtual"
+        :show="drawerAberto"
+        @close="drawerAberto = false"
+        @finalizado="recarregarMesa"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import mesaService from "@/services/mesaService";
+import mesaService from '@/services/mesaService'
+import MenuDrawer from '@/components/MenuDrawer.vue'
 
 export default {
-  name: 'MesaView',
+  components: { MenuDrawer },
   data() {
     return {
-      mesas: [1, 2, 3, 4, 5], 
+      mesas: [1, 2, 3, 4, 5],
       mesaSelecionada: null,
-      mesaAberta: null
-    };
+      mesaAberta: null,
+      drawerAberto: false,
+      acaoAtual: null
+    }
   },
   methods: {
     async selecionarMesa(id) {
-      this.mesaSelecionada = id;
-      const response = await mesaService.buscarMesa(id);
-
-      this.mesaAberta = response?.[0] || null;
-
-      console.log(this.mesaAberta)
+      this.mesaSelecionada = id
+      const response = await mesaService.buscarMesa(id)
+      this.mesaAberta = response?.[0] || null
     },
-    async abrirMesa() {
-      const payload = {
-        itemList: []
-      };
-      try {
-        await mesaService.abrirMesa(this.mesaSelecionada, payload);
-        this.selecionarMesa(this.mesaSelecionada); 
-      } catch (err) {
-        alert("Erro ao abrir mesa.");
-      }
+    abrirDrawer(acao) {
+      this.acaoAtual = acao
+      this.drawerAberto = true
     },
-    async adicionarPedido() {
-      const payload = {
-        itemList: [
-          { itemId: "123", itemName: "Exemplo", itemValue: 10, quantity: 1 }
-        ]
-      };
-      try {
-        await mesaService.adicionarPedido(this.mesaSelecionada, payload);
-        this.selecionarMesa(this.mesaSelecionada); 
-      } catch (err) {
-        alert("Erro ao adicionar pedido.");
-      }
+    async recarregarMesa() {
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      await this.selecionarMesa(this.mesaSelecionada)
     }
   }
-};
+}
 </script>
 
 <style scoped>
