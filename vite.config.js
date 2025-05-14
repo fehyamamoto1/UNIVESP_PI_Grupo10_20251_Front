@@ -6,6 +6,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/UNIVESP_PI_Grupo10_20251_Front/',
   plugins: [
     vue(),
     vueDevTools(),
