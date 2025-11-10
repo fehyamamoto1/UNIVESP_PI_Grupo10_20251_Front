@@ -10,7 +10,7 @@
         <v-list>
           <v-list-item class="px-2">
             <v-list-item-avatar>
-              <v-img src="https://pro-assets.grandchef.com.br/gc6544/images/logo/60da02f9bf843.png"></v-img>
+              <v-img src="https://img.freepik.com/vetores-gratis/laranja-fundo-gostoso-hamburguer-liso-desenho_23-2147624237.jpg?semt=ais_hybrid&w=740&q=80"></v-img>
             </v-list-item-avatar>
           </v-list-item>
 
