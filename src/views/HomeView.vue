@@ -62,7 +62,6 @@
         <li>Gabriel Bonifacio</li>
         <li>Jessica Santos</li>
         <li>Renan Bellardo</li>
-        <li>Paulo do Nascimento</li>
         <li>Willian Dias</li>
       </ul>
 
